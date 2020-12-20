@@ -14,9 +14,10 @@ export default class Header extends Component {
     constructor(props){
         super();
         this.state={isOpen:false};
+        this.toggle = this.toggle.bind(this);
     }
-    toggle = () => {
-        this.setState({isOpen:true});
+    toggle(){
+        this.setState({isOpen:!this.state.isOpen});
     }
     logout=()=>{
         this.props.onLogout(this.props.history);
@@ -39,6 +40,10 @@ export default class Header extends Component {
                   </NavItem>
                   <NavItem>
                     <Link className="nav-link" to="/up-coming-movie">Upcoming</Link>
+                  </NavItem>
+                  <NavItem>
+                    <div className="form-inline my-2 my-lg-0"><input type="text" placeholder="Movie Name" className="form-control mr-sm-2"></input>
+                    <button className="btn btn-secondary my-2 my-sm-0">Search</button></div>
                   </NavItem>
                   
                 </Nav>

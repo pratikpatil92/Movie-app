@@ -24,12 +24,12 @@ class TopRatedMovie extends Component {
                     return (
                         <div className="container-fluid justify-content-center slide">
                             
-                            <div className="row">
+                            <div className="row justify-content-center">
                                 {to_rated_movies.to_rated_movies.results.map((el,index)=>(
                                     
 
-                                    <div className="col-md-1 m-5 text-light w-100 zoom">
-                                        <img className="text-center" height="300" width="190" src={`https://image.tmdb.org/t/p/w500${el.poster_path}`}></img>
+                                    <div className="col-lg-2 col-md-3 col-sm-3 col-12 m-5 text-light w-100 zoom">
+                                        <img className="rounded img-fluid" src={`https://image.tmdb.org/t/p/w500${el.poster_path}`}></img>
                                         <h6 className="mt-2 text-left">{el.title}</h6>
                                         <p>Rating: {el.vote_average}</p>
                                     </div>

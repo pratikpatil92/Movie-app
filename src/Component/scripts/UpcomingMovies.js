@@ -22,14 +22,15 @@ class UpComingMovie extends Component {
         } else if(up_coming_movie.data_state=="FETCHED_SUCCESS"){
             console.log("page1",this.props.up_coming_movie)
                     return (
-                        <div className="container-fluid justify-content-center slide">
+                        <div>
+                        <div className="container-fluid slide">
                             
-                            <div className="row">
+                            <div className="row justify-content-center">
                                 {up_coming_movie.up_coming_movie.results.map((el,index)=>(
                                     
 
-                                    <div className="col-md-1 m-5 text-light w-100 zoom">
-                                        <img className="text-center" height="300" width="190" src={`https://image.tmdb.org/t/p/w500${el.poster_path}`}></img>
+                                    <div className="col-lg-2 col-md-3 col-sm-3 col-12 m-5 text-light w-100 zoom">
+                                        <img className="rounded img-fluid" src={`https://image.tmdb.org/t/p/w500${el.poster_path}`}></img>
                                         <h6 className="mt-2 text-left">{el.title}</h6>
                                         <p>Rating: {el.vote_average}</p>
                                     </div>
@@ -39,6 +40,7 @@ class UpComingMovie extends Component {
                             
                             
                             
+                        </div>
                         </div>
                     )}
                     else{

@@ -20,3 +20,7 @@
       transform: translateX(0);
     }
   }
+
+  .img-fluid{
+    width: 100% \9;
+  }
