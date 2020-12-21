@@ -1,38 +1,37 @@
 import React, { Component } from 'react'
 import {getPopularMovieDetail} from './../Redux/movies/PopularDetailAction';
-import {getCast} from './../Redux/movies/CastAction';
+import {getSearchCast} from './../Redux/movies/SearchCastAction';
 import {withRouter, Link} from 'react-router-dom'; 
 import {connect} from 'react-redux';
 import { Spinner } from 'reactstrap';
 import './css/movies.css'
 
-class PopularMovieDetails extends Component {
+class SearchMovieDetails extends Component {
     constructor(props){
         super(props);
         const id=props.match.params.id;
-        this.getPopularMovieDetail(id)
-        this.getCast(id)
+        this.getPopularMovieDetail(id);
+        this.getSearchCast(id);
     }
 
     getPopularMovieDetail=async (id)=>{
         await this.props.getPopularMovieDetail(id);
     }
-    getCast=async (id)=>{
-        await this.props.getCast(id);
+    getSearchCast=async (id)=>{
+        await this.props.getSearchCast(id);
     }
     render() {
         
         const popular_movie_details = this.props.popular_movie_details;
-        const cast = this.props.casts;
+        const search_casts = this.props.search_casts;
         console.log("a",popular_movie_details)
-        console.log("cast",cast)
-        if(popular_movie_details.data_state=="NOT_INITIALIZED" && cast.data_state=="NOT_INITIALIZED" || popular_movie_details.data_state=="FETCHING" && cast.data_state=="FETCHING"){
+        if(popular_movie_details.data_state=="NOT_INITIALIZED" && search_casts.data_state=="NOT_INITIALIZED" || popular_movie_details.data_state=="FETCHING" & search_casts.data_state=="FETCHING"){
             return (
                 <div>
                      <Spinner color="primary" />
                 </div>
             )
-        }else if(popular_movie_details.data_state=="FETCHED_SUCCESS" && cast.data_state=="FETCHED_SUCCESS"){
+        }else if(popular_movie_details.data_state=="FETCHED_SUCCESS" && search_casts.data_state=="FETCHED_SUCCESS"){
             console.log("page1",popular_movie_details)
         return (
            <div className="slide">
@@ -64,7 +63,7 @@ class PopularMovieDetails extends Component {
                     <div className="container-fluid p-3">
                         <h1 className="text-left text-light">Cast</h1>
                         <div className="row">
-                            {cast.casts.cast.slice(0,6).map((el,index)=>(
+                            {search_casts.search_casts.cast.slice(0,6).map((el,index)=>(
                                 <div className="col-lg-2 col-md-2 col-sm-2 text-light">
                                     <img className="img-fluid" src={`https://image.tmdb.org/t/p/w500${el.profile_path}`}></img>
                                     {el.name} <p>Character: {el.character}</p>
@@ -72,6 +71,7 @@ class PopularMovieDetails extends Component {
                             ))}
                         </div>
                     </div>
+                    
                     
                 
                 
@@ -85,9 +85,9 @@ class PopularMovieDetails extends Component {
 }
 
 const mapStateToProps=state=>({
+    search_casts:state.search_casts,
     popular_movie_details:state.popular_movie_details,
-    casts:state.casts,
 });
 
 
-export default connect (mapStateToProps, {getPopularMovieDetail, getCast})(withRouter(PopularMovieDetails));
+export default connect (mapStateToProps, {getPopularMovieDetail, getSearchCast})(withRouter(SearchMovieDetails));

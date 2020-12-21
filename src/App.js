@@ -4,7 +4,9 @@ import store from './store'
 import PopularMovies from './Component/scripts/PopularMovies';
 import TopRatedMovie from './Component/scripts/TopRatedMovie';
 import UpComingMovie from './Component/scripts/UpcomingMovies';
-import PopularMovieDetails from './Component/scripts/PopularMovieDetails'
+import PopularMovieDetails from './Component/scripts/PopularMovieDetails';
+import SearchResults from './Component/scripts/SearchResults'
+import SearchMovieDetails from './Component/scripts/SearchMovieDetails'
 import { Provider } from 'react-redux';
 import {BrowserRouter as Router, Route, Switch, Redirect, withRouter} from 'react-router-dom';
 
@@ -21,6 +23,8 @@ function App() {
         <Route exact path="/top-rated-movie" component={TopRatedMovie}></Route>
         <Route exact path="/up-coming-movie" component={UpComingMovie}></Route>
         <Route exact path="/popular-movie-detail/:id" component={PopularMovieDetails}></Route>
+        <Route exact path="/search-movie-detail/:id" component={SearchMovieDetails}></Route>
+        <Route exact path="/search-results/:name" component={SearchResults}></Route>
         </div>
       </Router>
     </Provider>
