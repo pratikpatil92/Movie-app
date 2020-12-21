@@ -29,9 +29,7 @@ export default class Header extends Component {
     }
 
     onSubmit = ()=>{
-        if (this.state.name){
-            this.history.push(`/search-results/${this.state.name}`)
-        }
+        this.setState({name:""})
     }
     
     render() {
@@ -55,7 +53,7 @@ export default class Header extends Component {
                   </NavItem>
                   <NavItem>
                     <div className="form-inline my-2 my-lg-0"><input type="text" placeholder="Movie Name" className="form-control mr-sm-2" name="name" value={name} onChange={this.onHandleChange}></input>
-                    <Link className="btn btn-secondary my-2 my-sm-0"  to={`/search-results/${name}`}>Search</Link></div>
+                    <Link className="btn btn-secondary my-2 my-sm-0"  to={`/search-results/${name}`} onClick={this.onSubmit}>Search</Link></div>
                   </NavItem>
                   
                 </Nav>
