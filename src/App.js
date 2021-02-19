@@ -33,8 +33,6 @@ const lazyPopularMovieDetails = React.lazy(() =>
   import("./Component/scripts/PopularMovieDetails")
 );
 
-
-
 function App() {
   return (
     <Provider store={store}>
@@ -42,11 +40,7 @@ function App() {
         <Router>
           <Header></Header>
           <div className="App">
-            <Route
-              exact 
-              path="/" 
-              component={lazyPopularMovies}>
-            </Route>
+            <Route exact path="/" component={lazyPopularMovies}></Route>
             <Routes
               exact
               path="/top-rated-movie"
