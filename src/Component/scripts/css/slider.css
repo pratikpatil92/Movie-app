@@ -1,0 +1,43 @@
+.tray-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.tray-container .slider-container {
+  margin: 10px 30px;
+  position: relative;
+}
+.tray-container .slider-container .slick-slider {
+  margin-left: -5px;
+}
+.tray-container .slider-container .slick-list {
+  overflow: visible;
+  margin-left: 5px;
+}
+.tray-container .slider-container .slick-list .slick-slide {
+  display: inline-block;
+}
+
+.arrow {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.arrow svg {
+  transition: color 300ms;
+}
+
+.arrow svg:hover {
+  color: #fff;
+}
+
+.next {
+  right: 1%;
+  top: 20%;
+}
+
+.prev {
+  left: -1%;
+  top: 20%;
+}
